@@ -3,78 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>黑白编辑部 - Yueping</title>
+    <title>编辑部 - 月评</title>
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
-  <body class="editorial-page">
-    <header class="site-bar">
-      <a class="brand-mark" href="../index.html"><span>月评</span><small>YUEPING</small></a>
-      <nav aria-label="Prototype navigation">
-        <a href="editorial.html">编辑部</a>
-        <a href="archive.html">声波档案</a>
-        <a href="zine.html">唱片小册</a>
+  <body class="review-index-page">
+    <header class="listening-header">
+      <a class="listening-brand" href="../index.html" aria-label="月评首页">
+        <span>月评</span>
+        <small>YUEPING</small>
+      </a>
+      <nav class="listening-nav" aria-label="主导航">
+        <a href="../index.html">首页</a>
+        <i>/</i>
+        <a href="../reviews.html">乐评</a>
+        <i>/</i>
+        <a href="archive.html">专辑</a>
+        <i>/</i>
+        <a href="zine.html">文字</a>
+        <i>/</i>
+        <a href="../submit.html">投稿</a>
       </nav>
     </header>
 
-    <main class="editorial-layout">
-      <aside class="issue-meta">
-        <p>Issue 001</p>
-        <p>Long Review</p>
-        <p>2026.06</p>
-      </aside>
+    <main class="review-index-shell">
+      <section class="review-index-hero">
+        <p class="meta-kicker">// 编辑部</p>
+        <h1>这个栏目已并入「文字」</h1>
+        <p>旧版编辑部原型已经归档。新的专题、说明与编辑部札记会统一放在文字栏目里。</p>
+      </section>
 
-      <article class="editorial-article">
-        <p class="eyebrow">Album Review</p>
-        <h1>凌晨三点的合成器，终于学会了低声说话</h1>
-        <div class="editorial-deck">
-          <p>
-            林屿的新专辑《慢速霓虹》没有急着证明自己，它把城市夜色压低到近乎耳语，
-            让每一次鼓点都像电梯门合上的瞬间。
-          </p>
-          <div class="score-block">
-            <span>8.4</span>
-            <small>/ 10</small>
-          </div>
-        </div>
-
-        <section class="album-strip" aria-label="Album details">
-          <div class="album-art editorial-art" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <dl>
-            <div><dt>Artist</dt><dd>林屿</dd></div>
-            <div><dt>Album</dt><dd>慢速霓虹</dd></div>
-            <div><dt>Genre</dt><dd>Ambient Pop / Synth</dd></div>
-            <div><dt>Label</dt><dd>North Window</dd></div>
-          </dl>
-        </section>
-
-        <div class="article-columns">
-          <p>
-            这张专辑最迷人的地方，是它拒绝把情绪推到最亮处。主唱的声音常常被放在混音后方，
-            像隔着一层雾气读出的短信。旋律不复杂，却在每个尾音处留下细微的折返。
-          </p>
-          <p>
-            《玻璃天桥》是整张唱片的重心。贝斯线不再承担传统流行歌里的推进功能，而是像一条
-            缓慢移动的阴影，把听者带进更低的房间。副歌没有爆发，只是把空间稍微打开。
-          </p>
-          <p>
-            如果说它有缺点，那也是一种审美上的固执：中段三首歌的温度过于接近，容易让听觉失去
-            分辨率。但当终曲《没有回声的街》出现时，这种克制又被重新证明是必要的。
-          </p>
-          <p>
-            《慢速霓虹》适合在夜里听，也适合在清晨听。它不提供答案，只把疲惫整理成一种可以
-            被凝视的形状。
-          </p>
-        </div>
-
-        <footer class="review-footer">
-          <span>Recommended tracks</span>
-          <b>玻璃天桥</b>
-          <b>反光雨</b>
-          <b>没有回声的街</b>
-        </footer>
-      </article>
+      <section class="essay-grid">
+        <article>
+          <span>继续阅读</span>
+          <h2><a href="zine.html">前往文字栏目</a></h2>
+          <p>查看月评的专题、投稿说明与编辑部观察。</p>
+        </article>
+      </section>
     </main>
   </body>
 </html>

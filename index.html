@@ -3,31 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REVUE - Immersive Music Review</title>
+    <title>月评 - 中文音乐评论</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body class="listening-review-page">
     <header class="listening-header">
-      <a class="listening-brand" href="index.html" aria-label="REVUE home">
-        <span>REVUE</span>
-        <small>NOTES ON MUSIC</small>
+      <a class="listening-brand" href="index.html" aria-label="月评首页">
+        <span>月评</span>
+        <small>YUEPING</small>
       </a>
-      <nav class="listening-nav" aria-label="Primary navigation">
-        <a href="reviews.html">Reviews</a>
+      <nav class="listening-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
         <i>/</i>
-        <a href="pages/archive.html">Albums</a>
+        <a href="reviews.html">乐评</a>
         <i>/</i>
-        <a href="pages/zine.html">Essays</a>
+        <a href="pages/archive.html">专辑</a>
         <i>/</i>
-        <a href="admin.html">Submit</a>
+        <a href="pages/zine.html">文字</a>
+        <i>/</i>
+        <a href="submit.html">投稿</a>
       </nav>
-      <button class="sound-button" aria-label="Sound wave">
+      <button class="sound-button" aria-label="播放装饰">
         <span></span><span></span><span></span>
       </button>
     </header>
 
     <main class="listening-stage">
-      <section class="album-panel" aria-label="Album display">
+      <section class="album-panel" aria-label="专辑展示">
         <div class="album-visual">
           <div class="vinyl-disc" aria-hidden="true">
             <span class="vinyl-label"></span>
@@ -39,57 +41,57 @@
             <div class="cover-noise" aria-hidden="true"></div>
             <div class="cover-mark" aria-hidden="true"></div>
             <figcaption>
-              <span data-review-cover-title>| A MOMENT APART |</span>
-              <strong data-review-cover-artist>ODESZA</strong>
+              <span data-review-cover-title>| 专辑 |</span>
+              <strong data-review-cover-artist>艺人</strong>
             </figcaption>
           </figure>
         </div>
 
         <div class="album-meta">
-          <p class="meta-kicker">Now Reading / Now Spinning</p>
-          <h1 data-review-title>Between Silence and Space</h1>
+          <p class="meta-kicker">正在阅读 / 正在播放</p>
+          <h1 data-review-title>等待第一篇乐评</h1>
           <dl>
             <div>
-              <dt>Artist</dt>
-              <dd data-review-artist>ODESZA</dd>
+              <dt>艺人</dt>
+              <dd data-review-artist>未知</dd>
             </div>
             <div>
-              <dt>Genre</dt>
-              <dd data-review-genre>Electronic / Ambient</dd>
+              <dt>类型</dt>
+              <dd data-review-genre>未分类</dd>
             </div>
             <div>
-              <dt>Year</dt>
-              <dd data-review-year>2024</dd>
+              <dt>年份</dt>
+              <dd data-review-year>--</dd>
             </div>
             <div>
-              <dt>Score</dt>
-              <dd data-review-score>9.2</dd>
+              <dt>评分</dt>
+              <dd data-review-score>--</dd>
             </div>
           </dl>
         </div>
       </section>
 
-      <article class="review-reader" aria-label="Scrollable review article">
+      <article class="review-reader" aria-label="乐评正文">
         <div class="review-scroll">
-          <p class="meta-kicker">// Review</p>
-          <h2 data-review-title>Between Silence and Space</h2>
+          <p class="meta-kicker">// 乐评</p>
+          <h2 data-review-title>等待第一篇乐评</h2>
 
           <div class="review-byline">
-            <span><b>Album</b><span data-review-album>A Moment Apart</span></span>
-            <span><b>Rating</b><span><span data-review-score>9.2</span> / 10</span></span>
-            <span><b>Author</b><span data-review-author>Alexandre Lefevre</span></span>
-            <span><b>Published</b><span data-review-date>May 14, 2024</span></span>
+            <span><b>专辑</b><span data-review-album>暂无</span></span>
+            <span><b>评分</b><span><span data-review-score>--</span> / 10</span></span>
+            <span><b>作者</b><span data-review-author>编辑部</span></span>
+            <span><b>发布</b><span data-review-date>待发布</span></span>
           </div>
 
           <div data-review-body></div>
 
-          <h3>Recommended Tracks</h3>
+          <h3>推荐曲目</h3>
           <ul class="track-list" data-review-tracks></ul>
         </div>
-        <div class="review-footer-nav" aria-label="Previous and next reviews">
-          <a href="#" data-review-prev><span>Prev</span>LP1</a>
-          <a class="review-grid-button" href="reviews.html" aria-label="Review index"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></a>
-          <a href="#" data-review-next><span>Next</span>Nurture</a>
+        <div class="review-footer-nav" aria-label="上一篇和下一篇">
+          <a href="#" data-review-prev><span>上一篇</span>暂无</a>
+          <a class="review-grid-button" href="reviews.html" aria-label="乐评列表"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></a>
+          <a href="#" data-review-next><span>下一篇</span>暂无</a>
         </div>
       </article>
     </main>

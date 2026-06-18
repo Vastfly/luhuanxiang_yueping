@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投稿 - 月评</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="review-submit-page">
+    <header class="listening-header">
+      <a class="listening-brand" href="index.html" aria-label="月评首页">
+        <span>月评</span>
+        <small>YUEPING</small>
+      </a>
+      <nav class="listening-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <i>/</i>
+        <a href="reviews.html">乐评</a>
+        <i>/</i>
+        <a href="pages/archive.html">专辑</a>
+        <i>/</i>
+        <a href="pages/zine.html">文字</a>
+      </nav>
+    </header>
+
+    <main class="admin-shell">
+      <section class="admin-intro">
+        <p class="meta-kicker">// 写一篇</p>
+        <h1>提交你的乐评</h1>
+        <p>登录并验证邮箱后即可投稿。投稿会先进入编辑部审核，通过后公开发布。</p>
+        <p class="backend-mode" data-backend-mode>正在检查后端连接...</p>
+      </section>
+
+      <section class="admin-login" data-auth-panel hidden>
+        <h2>登录 / 注册</h2>
+        <p>新用户注册后请先完成邮箱验证，再回到这里投稿。</p>
+        <form data-login-form>
+          <label>
+            邮箱
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            密码
+            <input name="password" type="password" autocomplete="current-password" required minlength="6" />
+          </label>
+          <div class="admin-actions">
+            <button type="submit" name="intent" value="signin">登录</button>
+            <button type="submit" name="intent" value="signup">注册</button>
+            <p data-login-status></p>
+          </div>
+        </form>
+      </section>
+
+      <form class="admin-form" data-review-form hidden>
+        <div class="admin-toolbar">
+          <span data-session-label></span>
+          <button type="button" data-sign-out hidden>退出登录</button>
+        </div>
+
+        <section class="album-search-panel admin-wide">
+          <h2>搜索真实专辑</h2>
+          <p>输入专辑名或艺人名，可从 MusicBrainz 自动填充基础资料；也可以完全手动填写。</p>
+          <div class="album-search-grid">
+            <label>
+              专辑名
+              <input name="searchAlbum" placeholder="例如：A Moon Shaped Pool" />
+            </label>
+            <label>
+              艺人
+              <input name="searchArtist" placeholder="例如：Radiohead" />
+            </label>
+            <button type="button" data-album-search>搜索专辑</button>
+          </div>
+          <p data-album-search-status></p>
+          <div class="album-result-list" data-album-results></div>
+        </section>
+
+        <label>
+          乐评标题
+          <input name="title" required placeholder="给这篇乐评起一个标题" />
+        </label>
+        <label>
+          专辑
+          <input name="album" required placeholder="专辑名" />
+        </label>
+        <label>
+          艺人
+          <input name="artist" required placeholder="艺人 / 乐队" />
+        </label>
+        <label>
+          类型
+          <input name="genre" placeholder="例如：Dream Pop / Ambient" />
+        </label>
+        <label>
+          年份
+          <input name="year" inputmode="numeric" placeholder="例如：2024" />
+        </label>
+        <label>
+          评分
+          <input name="score" inputmode="decimal" placeholder="0-10" />
+        </label>
+        <label>
+          作者
+          <input name="author" placeholder="你的署名" />
+        </label>
+        <label>
+          封面图片 URL
+          <input name="coverUrl" placeholder="https://..." />
+        </label>
+        <label class="admin-wide">
+          上传本地封面
+          <input name="coverFile" type="file" accept="image/*" />
+        </label>
+        <label class="admin-wide">
+          摘要
+          <textarea name="excerpt" rows="3" required placeholder="用一两句话概括这张专辑给你的感受。"></textarea>
+        </label>
+        <label class="admin-wide">
+          正文
+          <textarea name="body" rows="12" required placeholder="每段之间空一行，系统会自动分段。"></textarea>
+        </label>
+        <label class="admin-wide">
+          推荐曲目
+          <textarea name="tracks" rows="4" placeholder="每行一首歌"></textarea>
+        </label>
+        <div class="admin-actions">
+          <button type="submit">提交审核</button>
+          <p data-admin-status></p>
+        </div>
+      </form>
+
+      <section class="moderation-panel user-submissions" data-user-submissions hidden>
+        <div class="moderation-heading">
+          <h2>我的投稿</h2>
+          <p data-user-submissions-status>正在加载...</p>
+        </div>
+        <div class="moderation-list" data-user-submissions-list></div>
+      </section>
+    </main>
+
+    <script src="assets/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/reviews.js"></script>
+  </body>
+</html>

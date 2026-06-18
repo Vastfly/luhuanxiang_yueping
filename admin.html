@@ -3,117 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REVUE - Submit Review</title>
+    <title>审核后台 - 月评</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body class="review-admin-page">
     <header class="listening-header">
-      <a class="listening-brand" href="index.html" aria-label="REVUE home">
-        <span>REVUE</span>
-        <small>NOTES ON MUSIC</small>
+      <a class="listening-brand" href="index.html" aria-label="月评首页">
+        <span>月评</span>
+        <small>YUEPING</small>
       </a>
-      <nav class="listening-nav" aria-label="Primary navigation">
-        <a href="reviews.html">Reviews</a>
+      <nav class="listening-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
         <i>/</i>
-        <a href="index.html">Featured</a>
+        <a href="reviews.html">乐评</a>
+        <i>/</i>
+        <a href="submit.html">投稿</a>
       </nav>
     </header>
 
     <main class="admin-shell">
       <section class="admin-intro">
-        <p class="meta-kicker">// Editorial desk</p>
-        <h1>Submit a Review</h1>
-        <p>Supabase-ready editorial desk. It publishes to Supabase when configured, and falls back to local browser storage during setup.</p>
-        <p class="backend-mode" data-backend-mode>Checking backend...</p>
+        <p class="meta-kicker">// 编辑部</p>
+        <h1>审核后台</h1>
+        <p>管理员可以查看待审核投稿，并将合格乐评发布到前台。</p>
+        <p class="backend-mode" data-backend-mode>正在检查后端连接...</p>
       </section>
 
       <section class="admin-login" data-auth-panel hidden>
-        <h2>Editor Login</h2>
-        <p>Use a Supabase Auth account listed in `admin_users` to publish reviews.</p>
+        <h2>管理员登录</h2>
+        <p>请使用已加入 `admin_users` 的 Supabase 账号登录。</p>
         <form data-login-form>
           <label>
-            Email
+            邮箱
             <input name="email" type="email" autocomplete="email" required />
           </label>
           <label>
-            Password
+            密码
             <input name="password" type="password" autocomplete="current-password" required />
           </label>
           <div class="admin-actions">
-            <button type="submit">Sign In</button>
+            <button type="submit">登录</button>
             <p data-login-status></p>
           </div>
         </form>
       </section>
 
-      <form class="admin-form" data-review-form>
+      <section class="moderation-panel" data-admin-panel hidden>
         <div class="admin-toolbar">
-          <span data-session-label>Local editor session</span>
-          <button type="button" data-sign-out hidden>Sign Out</button>
+          <span data-session-label></span>
+          <button type="button" data-sign-out hidden>退出登录</button>
         </div>
-        <label>
-          Review title
-          <input name="title" required value="Between Silence and Space" />
-        </label>
-        <label>
-          Album
-          <input name="album" required value="A Moment Apart" />
-        </label>
-        <label>
-          Artist
-          <input name="artist" required value="ODESZA" />
-        </label>
-        <label>
-          Genre
-          <input name="genre" value="Electronic / Ambient" />
-        </label>
-        <label>
-          Year
-          <input name="year" inputmode="numeric" value="2024" />
-        </label>
-        <label>
-          Score
-          <input name="score" inputmode="decimal" value="9.2" />
-        </label>
-        <label>
-          Author
-          <input name="author" value="Editorial" />
-        </label>
-        <label>
-          Cover image URL
-          <input name="coverUrl" placeholder="https://..." />
-        </label>
-        <label class="admin-wide">
-          Upload local cover
-          <input name="coverFile" type="file" accept="image/*" />
-        </label>
-        <label class="admin-wide">
-          Excerpt
-          <textarea name="excerpt" rows="3">A short, atmospheric review excerpt for the archive page.</textarea>
-        </label>
-        <label class="admin-wide">
-          Review body
-          <textarea name="body" rows="12" required>First paragraph of the review. Keep it vivid and editorial.
-
-Second paragraph with critical detail, production notes, and listening context.
-
-Third paragraph on structure, sound, and emotional weight.
-
-A pull-quote style paragraph that can become the article quote.
-
-Closing paragraph with the verdict.</textarea>
-        </label>
-        <label class="admin-wide">
-          Recommended tracks
-          <textarea name="tracks" rows="4">Track One
-Track Two
-Track Three</textarea>
-        </label>
-        <div class="admin-actions">
-          <button type="submit">Save Review</button>
-          <p data-admin-status></p>
+        <div class="moderation-heading">
+          <h2>待审核投稿</h2>
+          <p data-admin-status>正在加载...</p>
         </div>
-      </form>
+        <div class="moderation-list" data-moderation-list></div>
+      </section>
     </main>
 
     <script src="assets/config.js"></script>
