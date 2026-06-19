@@ -57,6 +57,61 @@ as $$
   );
 $$;
 
+create or replace function public.get_pending_reviews()
+returns setof public.reviews
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select *
+  from public.reviews
+  where status = 'pending'
+    and public.is_admin()
+  order by created_at asc;
+$$;
+
+create or replace function public.moderate_review(
+  review_id text,
+  next_status text,
+  note text default ''
+)
+returns public.reviews
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  updated_review public.reviews;
+begin
+  if not public.is_admin() then
+    raise exception 'Only admins can moderate reviews.';
+  end if;
+
+  if next_status not in ('published', 'rejected') then
+    raise exception 'Invalid moderation status.';
+  end if;
+
+  update public.reviews
+  set
+    status = next_status,
+    review_note = coalesce(note, ''),
+    published = case
+      when next_status = 'published'
+      then to_char(now() at time zone 'Asia/Shanghai', 'YYYY"年"FMMM"月"FMDD"日"')
+      else ''
+    end
+  where id = review_id
+  returning * into updated_review;
+
+  if updated_review.id is null then
+    raise exception 'Review not found.';
+  end if;
+
+  return updated_review;
+end;
+$$;
+
 create or replace function public.is_verified_user()
 returns boolean
 language sql

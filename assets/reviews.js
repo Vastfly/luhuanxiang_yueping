@@ -114,6 +114,10 @@
     if (!supabaseClient) return true;
     const session = await getSession();
     if (!session) return false;
+
+    const { data: rpcData, error: rpcError } = await supabaseClient.rpc("is_admin");
+    if (!rpcError && typeof rpcData === "boolean") return rpcData;
+
     const { data, error } = await supabaseClient
       .from("admin_users")
       .select("email")
@@ -143,11 +147,7 @@
 
   async function getPendingReviews() {
     if (!supabaseClient) return [];
-    const { data, error } = await supabaseClient
-      .from("reviews")
-      .select("*")
-      .eq("status", "pending")
-      .order("created_at", { ascending: true });
+    const { data, error } = await supabaseClient.rpc("get_pending_reviews");
     if (error) throw error;
     return (data || []).map(normalizeReview);
   }
@@ -182,12 +182,11 @@
 
   async function moderateReview(id, status, note) {
     if (!supabaseClient) throw new Error("当前没有连接 Supabase。");
-    const patch = {
-      status,
-      review_note: note || "",
-      published: status === "published" ? todayZh() : ""
-    };
-    const { error } = await supabaseClient.from("reviews").update(patch).eq("id", id);
+    const { error } = await supabaseClient.rpc("moderate_review", {
+      review_id: id,
+      next_status: status,
+      note: note || ""
+    });
     if (error) throw error;
   }
 
@@ -409,7 +408,15 @@
 
     const session = await getSession();
     const verified = isEmailVerified(session);
-    const admin = session ? await isAdmin() : false;
+    let admin = false;
+    let adminError = null;
+    if (session) {
+      try {
+        admin = await isAdmin();
+      } catch (error) {
+        adminError = error;
+      }
+    }
 
     if (authPanel) authPanel.hidden = Boolean(session);
     if (signOutButton) signOutButton.hidden = !session;
@@ -428,6 +435,7 @@
 
     if (adminPanel) {
       adminPanel.hidden = !(session && admin && isAdminPage);
+      if (session && adminError && loginStatus) loginStatus.textContent = `管理员检查失败：${adminError.message || adminError}`;
       if (session && !admin && loginStatus) loginStatus.textContent = "当前账号不是管理员，无法进入审核后台。";
     }
 
