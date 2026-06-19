@@ -155,23 +155,29 @@ button {
   min-height: 720px;
   padding: 30px;
   overflow: hidden;
+  display: grid;
+  align-items: center;
 }
 
 .album-visual {
   position: relative;
-  min-height: 520px;
+  min-height: 620px;
+  width: 100%;
 }
 
 .vinyl-disc {
   position: absolute;
-  inset: 0 auto auto 0;
-  width: min(440px, 100%);
+  left: 0;
+  top: 50%;
+  width: min(520px, 76%);
   aspect-ratio: 1;
+  transform: translateY(-50%);
   border-radius: 50%;
   background:
     radial-gradient(circle at center, rgba(255,255,255,0.08) 0 5%, transparent 5.2%),
     radial-gradient(circle at center, #141816 0 16%, #0d100f 16.4% 30%, #0a0d0c 30.3% 100%);
   box-shadow: 0 24px 60px rgba(0,0,0,0.36);
+  z-index: 1;
 }
 
 .vinyl-label {
@@ -191,16 +197,18 @@ button {
 
 .album-cover {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: min(420px, 76%);
+  left: 50%;
+  top: 50%;
+  width: min(480px, 74%);
   aspect-ratio: 1;
+  transform: translate(-34%, -50%);
   background:
     linear-gradient(135deg, rgba(255,255,255,0.04), transparent 40%),
     #101312;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
   overflow: hidden;
-  box-shadow: 0 28px 64px rgba(0,0,0,0.4);
+  box-shadow: 0 34px 78px rgba(0,0,0,0.54);
+  z-index: 2;
 }
 
 .album-cover::before,
@@ -270,18 +278,6 @@ button {
   letter-spacing: 0;
 }
 
-.album-meta {
-  position: absolute;
-  right: 30px;
-  top: 34px;
-  width: min(420px, 44%);
-  background: rgba(16, 19, 18, 0.8);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 24px;
-  backdrop-filter: blur(12px);
-}
-
 .meta-kicker,
 .issue-meta,
 .archive-kicker,
@@ -299,7 +295,6 @@ button {
   margin: 0 0 10px;
 }
 
-.album-meta h1,
 .review-index-hero h1,
 .admin-intro h1,
 .review-scroll h2,
@@ -309,29 +304,6 @@ button {
   margin: 0;
   line-height: 0.98;
   letter-spacing: 0;
-}
-
-.album-meta h1 {
-  font-size: clamp(42px, 5vw, 70px);
-  margin-bottom: 22px;
-}
-
-.album-meta dl {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin: 0;
-}
-
-.album-meta dt {
-  color: var(--subtle);
-  font-size: 13px;
-  margin-bottom: 6px;
-}
-
-.album-meta dd {
-  margin: 0;
-  font-size: 18px;
 }
 
 .review-reader {
@@ -353,7 +325,7 @@ button {
 
 .review-byline {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 28px;
   padding-bottom: 20px;
@@ -792,12 +764,6 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .album-meta {
-    position: static;
-    width: auto;
-    margin-top: 22px;
-  }
-
   .review-byline,
   .album-search-grid,
   .review-list-card,
@@ -839,14 +805,15 @@ button {
   }
 
   .vinyl-disc {
-    width: 86%;
+    left: 0;
+    width: 82%;
   }
 
   .album-cover {
-    width: 68%;
+    width: 72%;
+    transform: translate(-28%, -50%);
   }
 
-  .album-meta h1,
   .review-scroll h2,
   .review-index-hero h1,
   .admin-intro h1 {
